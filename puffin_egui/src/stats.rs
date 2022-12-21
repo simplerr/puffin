@@ -74,12 +74,12 @@ pub fn ui(ui: &mut egui::Ui, options: &mut Options, frames: &[std::sync::Arc<Unp
                     ui.label(key.id);
                     ui.monospace(format!("{:>5}", stats.count));
                     ui.monospace(format!("{:>6.1} kB", stats.bytes as f32 * 1e-3));
-                    ui.monospace(format!("{:>8.1} µs", stats.total_self_ns as f32 * 1e-3));
+                    ui.monospace(format!("{:>8.1} us", stats.total_self_ns as f32 * 1e-3));
                     ui.monospace(format!(
-                        "{:>8.1} µs",
+                        "{:>8.1} us",
                         stats.total_self_ns as f32 * 1e-3 / (stats.count as f32)
                     ));
-                    ui.monospace(format!("{:>8.1} µs", stats.max_ns as f32 * 1e-3));
+                    ui.monospace(format!("{:>8.1} us", stats.max_ns as f32 * 1e-3));
                     ui.end_row();
                 }
             });

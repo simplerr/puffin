@@ -9,7 +9,7 @@ impl Filter {
             ui.label("Scope filter:");
             ui.text_edit_singleline(&mut self.filter);
             self.filter = self.filter.to_lowercase();
-            if ui.button("ｘ").clicked() {
+            if ui.button("x").clicked() {
                 self.filter.clear();
             }
         });

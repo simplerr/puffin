@@ -49,7 +49,7 @@ impl Sorting {
         ui.horizontal(|ui| {
             ui.label("Sort threads by:");
 
-            let dir = if self.reversed { '⬆' } else { '⬇' };
+            let dir = if self.reversed { '^' } else { 'v' };
 
             for &sort_by in &[SortBy::Time, SortBy::Name] {
                 let selected = self.sort_by == sort_by;
@@ -219,7 +219,7 @@ pub fn ui(ui: &mut egui::Ui, options: &mut Options, frames: &SelectedFrames) {
 
     ui.columns(2, |ui| {
         ui[0].horizontal(|ui| {
-            ui.colored_label(ui.visuals().widgets.inactive.text_color(), "❓")
+            ui.colored_label(ui.visuals().widgets.inactive.text_color(), "?")
                 .on_hover_text(
                     "Drag to pan.\n\
             Zoom: Ctrl/cmd + scroll, or drag with secondary mouse button.\n\
@@ -863,7 +863,7 @@ fn merge_scope_tooltip(ui: &mut egui::Ui, merge: &MergeScope<'_>, num_frames: us
 }
 
 fn paint_thread_info(info: &Info, thread: &ThreadInfo, pos: Pos2, collapsed: &mut bool) {
-    let collapsed_symbol = if *collapsed { "⏵" } else { "⏷" };
+    let collapsed_symbol = if *collapsed { ">" } else { "v" };
 
     let galley = info.ctx.fonts().layout_no_wrap(
         format!("{} {}", collapsed_symbol, thread.name.clone()),

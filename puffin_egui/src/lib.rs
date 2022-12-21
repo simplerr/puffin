@@ -505,7 +505,7 @@ impl ProfilerUi {
             let play_pause_button_size = Vec2::splat(24.0);
             if self.paused.is_some() {
                 if ui
-                    .add_sized(play_pause_button_size, egui::Button::new("▶"))
+                    .add_sized(play_pause_button_size, egui::Button::new(">"))
                     .on_hover_text("Show latest data. Toggle with space.")
                     .clicked()
                     || ui.input().key_pressed(egui::Key::Space)
@@ -515,7 +515,7 @@ impl ProfilerUi {
             } else {
                 ui.horizontal(|ui| {
                     if ui
-                        .add_sized(play_pause_button_size, egui::Button::new("⏸"))
+                        .add_sized(play_pause_button_size, egui::Button::new("||"))
                         .on_hover_text("Pause on this frame. Toggle with space.")
                         .clicked()
                         || ui.input().key_pressed(egui::Key::Space)
@@ -855,7 +855,7 @@ fn max_frames_ui(ui: &mut egui::Ui, frame_view: &mut FrameView) {
         frame_view.set_max_recent(memory_length);
 
         ui.label(format!(
-            "(≈ {:.1} minutes, ≈ {:.0} MB)",
+            "(~ {:.1} minutes, ~ {:.0} MB)",
             memory_length as f64 / 60.0 / frames_per_second,
             memory_length as f64 * bytes as f64 / uniq.len() as f64 * 1e-6,
         ));
